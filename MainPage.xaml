@@ -1,0 +1,93 @@
+﻿<Page
+	x:Name="pgMainPage"
+    x:Class="Hamburger__menu_swipe_in.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hamburger__menu_swipe_in"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" 
+	RequestedTheme="Dark"
+	ManipulationStarted="grdManagement_ManipulationStarted" 
+	ManipulationDelta="grdManagement_ManipulationDelta" 
+	ManipulationCompleted="grdManagement_ManipulationCompleted">
+
+
+	<Page.Resources>
+		<Storyboard x:Name="strbrdShowMenu">
+			<DoubleAnimation x:Name="shMenu0" Storyboard.TargetName="trnslttrnsfrmHamburgerBackground" Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">
+				<DoubleAnimation.EasingFunction>
+					<CubicEase EasingMode="EaseInOut"/>
+				</DoubleAnimation.EasingFunction>
+			</DoubleAnimation>
+			<DoubleAnimation x:Name="shMenu1" Storyboard.TargetName="trnslttrnsfrmMenuTop" Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">
+				<DoubleAnimation.EasingFunction>
+					<CubicEase EasingMode="EaseInOut"/>
+				</DoubleAnimation.EasingFunction>
+			</DoubleAnimation>
+			<DoubleAnimation x:Name="shMenu2" Storyboard.TargetName="trnslttrnsfrmMenuBottom" Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">
+				<DoubleAnimation.EasingFunction>
+					<CubicEase EasingMode="EaseInOut"/>
+				</DoubleAnimation.EasingFunction>
+			</DoubleAnimation>
+		</Storyboard>
+		<Storyboard x:Name="strbrdHideMenu">
+			<DoubleAnimation x:Name="hdMenu0" Storyboard.TargetName="trnslttrnsfrmHamburgerBackground" Storyboard.TargetProperty="X" From="0" Duration="0:0:0.2">
+				<DoubleAnimation.EasingFunction>
+					<CubicEase EasingMode="EaseInOut"/>
+				</DoubleAnimation.EasingFunction>
+			</DoubleAnimation>
+			<DoubleAnimation x:Name="hdMenu1" Storyboard.TargetName="trnslttrnsfrmMenuTop" Storyboard.TargetProperty="X" From="0" Duration="0:0:0.2">
+				<DoubleAnimation.EasingFunction>
+					<CubicEase EasingMode="EaseInOut"/>
+				</DoubleAnimation.EasingFunction>
+			</DoubleAnimation>
+			<DoubleAnimation x:Name="hdMenu2" Storyboard.TargetName="trnslttrnsfrmMenuBottom" Storyboard.TargetProperty="X" From="0" Duration="0:0:0.2">
+				<DoubleAnimation.EasingFunction>
+					<CubicEase EasingMode="EaseInOut"/>
+				</DoubleAnimation.EasingFunction>
+			</DoubleAnimation>
+		</Storyboard>
+	</Page.Resources>
+	
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<TextBlock x:Name="txtblckMenuTapped" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		<Grid x:Name="grdHamburgerMenu" Height="40" Background="#202020" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0,0">
+			<Grid.RenderTransform>
+				<TranslateTransform x:Name="trnslttrnsfrmHamburgerBackground"/>
+			</Grid.RenderTransform>
+		</Grid>
+		<Grid x:Name="grdManagementOverlay" Background="Transparent" Visibility="Collapsed" Tapped="grdManagementOverlay_Tapped"/>
+		<Button x:Name="bttnHamburgerMenu" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Background="Transparent" FontSize="32" HorizontalAlignment="Left" VerticalAlignment="Top" Tapped="bttnHamburgerMenu_Tapped"/>
+		<StackPanel x:Name="stckpnlMenuTop" Margin="0,40,0,0" HorizontalAlignment="Left" Background="#202020" RenderTransformOrigin="0,0">
+			<StackPanel.RenderTransform>
+				<TranslateTransform x:Name="trnslttrnsfrmMenuTop"/>
+			</StackPanel.RenderTransform>
+			<StackPanel x:Name="stckpnlHome_stckpnlMenuTop" Orientation="Horizontal" Margin="0,20,0,0" Tapped="MenuHome_Tapped">
+				<Image Source="Images/Menu/Home.png" VerticalAlignment="Center" Width="48" Height="48"/>
+				<TextBlock Text="Home" FontSize="20" VerticalAlignment="Center" Width="150" TextWrapping="Wrap"/>
+			</StackPanel>
+			<StackPanel x:Name="stckpnlMenuAdd_stckpnlMenuTop" Orientation="Horizontal" Margin="0,20,0,0" Tapped="MenuAdd_Tapped">
+				<Image Source="Images/Menu/Add.png" VerticalAlignment="Center" Width="48" Height="48"/>
+				<TextBlock Text="Add" FontSize="20" VerticalAlignment="Center" Width="150" TextWrapping="Wrap"/>
+			</StackPanel>
+		</StackPanel>
+		<StackPanel x:Name="stckpnlMenuBottom" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="#202020" RenderTransformOrigin="0,0">
+			<StackPanel.RenderTransform>
+				<TranslateTransform x:Name="trnslttrnsfrmMenuBottom"/>
+			</StackPanel.RenderTransform>
+			<StackPanel x:Name="stckpnlPrivacy_stckpnlMenuBottom" Orientation="Horizontal" Margin="0,20,0,0" Tapped="MenuPrivacy_Tapped" >
+				<Image Source="Images/Menu/Privacy.png" VerticalAlignment="Center" Width="48" Height="48"/>
+				<TextBlock Text="Privacy" FontSize="20" VerticalAlignment="Center" Width="150" TextWrapping="Wrap"/>
+			</StackPanel>
+			<StackPanel x:Name="stckpnlTerms_stckpnlMenuBottom" Orientation="Horizontal" Margin="0,20,0,0" Tapped="MenuTerms_Tapped" >
+				<Image Source="Images/Menu/Terms.png" VerticalAlignment="Center" Width="48" Height="48"/>
+				<TextBlock Text="Terms" FontSize="20" VerticalAlignment="Center" Width="150" TextWrapping="Wrap"/>
+			</StackPanel>
+			<StackPanel x:Name="stckpnlAbout_stckpnlMenuBottom" Orientation="Horizontal" Margin="0,20,0,0" Tapped="MenuAbout_Tapped" >
+				<Image Source="Images/Menu/About.png" VerticalAlignment="Center" Width="48" Height="48"/>
+				<TextBlock Text="About" FontSize="20" VerticalAlignment="Center" Width="150" TextWrapping="Wrap"/>
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</Page>
