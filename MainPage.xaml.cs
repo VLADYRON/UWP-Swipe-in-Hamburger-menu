@@ -81,14 +81,14 @@ namespace Hamburger__menu_swipe_in
 			HideMenu();
 		}
 
-		private void grdManagementOverlay_Tapped(object sender, TappedRoutedEventArgs e)
+		private void grdPageOverlay_Tapped(object sender, TappedRoutedEventArgs e)
 		{
 			HideMenu();
 		}
 
 		private async void ShowMenu()
 		{
-			grdManagementOverlay.Visibility = Visibility.Visible;
+			grdPageOverlay.Visibility = Visibility.Visible;
 			await strbrdShowMenu.BeginAsync();
 			HamburgerMenuOpen = true;
 		}
@@ -96,17 +96,17 @@ namespace Hamburger__menu_swipe_in
 		private async void HideMenu()
 		{
 			HamburgerMenuOpen = false;
-			grdManagementOverlay.Visibility = Visibility.Collapsed;
+			grdPageOverlay.Visibility = Visibility.Collapsed;
 			await strbrdHideMenu.BeginAsync();
 		}
 
-		private void grdManagement_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+		private void pgMainPage_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
 		{
 			InitialManipulationPoint = e.Position.X;
 			TriggerManipulation = HamburgerMenuOpen ? false : InitialManipulationPoint < 30 ? true : false;
 		}
 
-		private void grdManagement_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
+		private void pgMainPage_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
 		{
 
 			if ((TriggerManipulation || HamburgerMenuOpen) && (!(HamburgerMenuOpen && InitialManipulationPoint < e.Position.X) || TriggerManipulation))
@@ -121,7 +121,7 @@ namespace Hamburger__menu_swipe_in
 			}
 		}
 
-		private async void grdManagement_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+		private async void pgMainPage_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
 		{
 			if (!(HamburgerMenuOpen && InitialManipulationPoint < e.Position.X) || TriggerManipulation)
 			{
@@ -133,11 +133,11 @@ namespace Hamburger__menu_swipe_in
 					await strbrdShowMenu.BeginAsync();
 					shMenu1.From = -stckpnlMenuWidth;
 					shMenu2.From = -stckpnlMenuWidth;
-					grdManagementOverlay.Visibility = Visibility.Visible;
+					grdPageOverlay.Visibility = Visibility.Visible;
 				}
 				else
 				{
-					grdManagementOverlay.Visibility = Visibility.Collapsed;
+					grdPageOverlay.Visibility = Visibility.Collapsed;
 					hdMenu1.From = X - stckpnlMenuWidth;
 					hdMenu2.From = X - stckpnlMenuWidth;
 					await strbrdHideMenu.BeginAsync();

@@ -8,9 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" 
 	RequestedTheme="Dark"
-	ManipulationStarted="grdManagement_ManipulationStarted" 
-	ManipulationDelta="grdManagement_ManipulationDelta" 
-	ManipulationCompleted="grdManagement_ManipulationCompleted">
+	ManipulationStarted="pgMainPage_ManipulationStarted" 
+	ManipulationDelta="pgMainPage_ManipulationDelta" 
+	ManipulationCompleted="pgMainPage_ManipulationCompleted">
 
 
 	<Page.Resources>
@@ -41,8 +41,11 @@
 	</Page.Resources>
 	
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<TextBlock x:Name="txtblckMenuTapped" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-		<Grid x:Name="grdManagementOverlay" Background="Transparent" Visibility="Collapsed" Tapped="grdManagementOverlay_Tapped"/>
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+			<TextBlock x:Name="txtblckMenuTapped" Text="Description" FontSize="32" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+			<TextBlock Width="400" TextAlignment="Center" TextWrapping="Wrap" Text="To open the menu, swipe the hamburger menu in from the left or tap the hamburger.&#x0a;&#x0a;For closing the menu, tap right of the menu, tap the hamburger or swipe the menu to the left." FontSize="24" />
+		</StackPanel>
+		<Grid x:Name="grdPageOverlay" Background="Transparent" Visibility="Collapsed" Tapped="grdPageOverlay_Tapped"/>
 		<StackPanel x:Name="stckpnlMenuTop" Padding="0,40,0,0" HorizontalAlignment="Left" Background="#202020" RenderTransformOrigin="0,0">
 			<StackPanel.RenderTransform>
 				<TranslateTransform x:Name="trnslttrnsfrmMenuTop"/>
