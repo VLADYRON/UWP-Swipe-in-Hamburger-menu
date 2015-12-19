@@ -1,3 +1,3 @@
 # UWP-Swipe-in-Hamburger-menu
 
-For more consistent app's this code can be used to easily implement a swipe-in hamburger menu like in the Groove app.
+This code can be used to create a swipe in hamburger menu - consistent with apps like Groove on the UWP platform.
