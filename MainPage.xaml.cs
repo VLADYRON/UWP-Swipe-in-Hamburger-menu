@@ -17,7 +17,6 @@ namespace Hamburger__menu_swipe_in
         {
             InitializeComponent();
 			InitializeHamburgerMenu();
-			trnslttrnsfrmHamburgerBackground.X = -stckpnlMenuWidth;
 			trnslttrnsfrmMenuTop.X = -stckpnlMenuWidth;
 			trnslttrnsfrmMenuBottom.X = -stckpnlMenuWidth;
 			pgMainPage.ManipulationMode = ManipulationModes.TranslateX;
@@ -32,13 +31,10 @@ namespace Hamburger__menu_swipe_in
 
 		private void InitializeHamburgerMenu()
 		{
-			shMenu0.From = -stckpnlMenuWidth;
 			shMenu1.From = -stckpnlMenuWidth;
 			shMenu2.From = -stckpnlMenuWidth;
-			hdMenu0.To = -stckpnlMenuWidth;
 			hdMenu1.To = -stckpnlMenuWidth;
 			hdMenu2.To = -stckpnlMenuWidth;
-			grdHamburgerMenu.Width = stckpnlMenuWidth;
 			stckpnlMenuTop.Width = stckpnlMenuWidth;
 			stckpnlMenuBottom.Width = stckpnlMenuWidth;
 		}
@@ -119,7 +115,6 @@ namespace Hamburger__menu_swipe_in
 				{
 					HamburgerMenuOpen = true;
 					Point currentpoint = e.Position;
-					trnslttrnsfrmHamburgerBackground.X = e.Position.X < stckpnlMenuWidth ? -stckpnlMenuWidth + e.Position.X : 0;
 					trnslttrnsfrmMenuTop.X = e.Position.X < stckpnlMenuWidth ? -stckpnlMenuWidth + e.Position.X : 0;
 					trnslttrnsfrmMenuBottom.X = e.Position.X < stckpnlMenuWidth ? -stckpnlMenuWidth + e.Position.X : 0;
 				}
@@ -133,11 +128,9 @@ namespace Hamburger__menu_swipe_in
 				double X = e.Position.X > stckpnlMenuWidth ? stckpnlMenuWidth : e.Position.X;
 				if (X > stckpnlMenuWidth / 2)
 				{
-					shMenu0.From = -stckpnlMenuWidth + X;
 					shMenu1.From = -stckpnlMenuWidth + X;
 					shMenu2.From = -stckpnlMenuWidth + X;
 					await strbrdShowMenu.BeginAsync();
-					shMenu0.From = -stckpnlMenuWidth;
 					shMenu1.From = -stckpnlMenuWidth;
 					shMenu2.From = -stckpnlMenuWidth;
 					grdManagementOverlay.Visibility = Visibility.Visible;
@@ -145,11 +138,9 @@ namespace Hamburger__menu_swipe_in
 				else
 				{
 					grdManagementOverlay.Visibility = Visibility.Collapsed;
-					hdMenu0.From = X - stckpnlMenuWidth;
 					hdMenu1.From = X - stckpnlMenuWidth;
 					hdMenu2.From = X - stckpnlMenuWidth;
 					await strbrdHideMenu.BeginAsync();
-					hdMenu0.From = 0;
 					hdMenu1.From = 0;
 					hdMenu2.From = 0;
 					HamburgerMenuOpen = false;

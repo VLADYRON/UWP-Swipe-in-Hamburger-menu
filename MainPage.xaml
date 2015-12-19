@@ -15,11 +15,6 @@
 
 	<Page.Resources>
 		<Storyboard x:Name="strbrdShowMenu">
-			<DoubleAnimation x:Name="shMenu0" Storyboard.TargetName="trnslttrnsfrmHamburgerBackground" Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">
-				<DoubleAnimation.EasingFunction>
-					<CubicEase EasingMode="EaseInOut"/>
-				</DoubleAnimation.EasingFunction>
-			</DoubleAnimation>
 			<DoubleAnimation x:Name="shMenu1" Storyboard.TargetName="trnslttrnsfrmMenuTop" Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">
 				<DoubleAnimation.EasingFunction>
 					<CubicEase EasingMode="EaseInOut"/>
@@ -32,11 +27,6 @@
 			</DoubleAnimation>
 		</Storyboard>
 		<Storyboard x:Name="strbrdHideMenu">
-			<DoubleAnimation x:Name="hdMenu0" Storyboard.TargetName="trnslttrnsfrmHamburgerBackground" Storyboard.TargetProperty="X" From="0" Duration="0:0:0.2">
-				<DoubleAnimation.EasingFunction>
-					<CubicEase EasingMode="EaseInOut"/>
-				</DoubleAnimation.EasingFunction>
-			</DoubleAnimation>
 			<DoubleAnimation x:Name="hdMenu1" Storyboard.TargetName="trnslttrnsfrmMenuTop" Storyboard.TargetProperty="X" From="0" Duration="0:0:0.2">
 				<DoubleAnimation.EasingFunction>
 					<CubicEase EasingMode="EaseInOut"/>
@@ -52,14 +42,8 @@
 	
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<TextBlock x:Name="txtblckMenuTapped" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-		<Grid x:Name="grdHamburgerMenu" Height="40" Background="#202020" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0,0">
-			<Grid.RenderTransform>
-				<TranslateTransform x:Name="trnslttrnsfrmHamburgerBackground"/>
-			</Grid.RenderTransform>
-		</Grid>
 		<Grid x:Name="grdManagementOverlay" Background="Transparent" Visibility="Collapsed" Tapped="grdManagementOverlay_Tapped"/>
-		<Button x:Name="bttnHamburgerMenu" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Background="Transparent" FontSize="32" HorizontalAlignment="Left" VerticalAlignment="Top" Tapped="bttnHamburgerMenu_Tapped"/>
-		<StackPanel x:Name="stckpnlMenuTop" Margin="0,40,0,0" HorizontalAlignment="Left" Background="#202020" RenderTransformOrigin="0,0">
+		<StackPanel x:Name="stckpnlMenuTop" Padding="0,40,0,0" HorizontalAlignment="Left" Background="#202020" RenderTransformOrigin="0,0">
 			<StackPanel.RenderTransform>
 				<TranslateTransform x:Name="trnslttrnsfrmMenuTop"/>
 			</StackPanel.RenderTransform>
@@ -72,7 +56,7 @@
 				<TextBlock Text="Add" FontSize="20" VerticalAlignment="Center" Width="150" TextWrapping="Wrap"/>
 			</StackPanel>
 		</StackPanel>
-		<StackPanel x:Name="stckpnlMenuBottom" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="#202020" RenderTransformOrigin="0,0">
+		<StackPanel x:Name="stckpnlMenuBottom" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="#202020" RenderTransformOrigin="0,0" Padding="0,0,0,10">
 			<StackPanel.RenderTransform>
 				<TranslateTransform x:Name="trnslttrnsfrmMenuBottom"/>
 			</StackPanel.RenderTransform>
@@ -89,5 +73,6 @@
 				<TextBlock Text="About" FontSize="20" VerticalAlignment="Center" Width="150" TextWrapping="Wrap"/>
 			</StackPanel>
 		</StackPanel>
+		<Button x:Name="bttnHamburgerMenu" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Background="Transparent" FontSize="32" HorizontalAlignment="Left" VerticalAlignment="Top" Tapped="bttnHamburgerMenu_Tapped"/>
 	</Grid>
 </Page>
