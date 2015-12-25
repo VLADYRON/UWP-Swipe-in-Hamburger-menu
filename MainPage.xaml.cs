@@ -123,27 +123,30 @@ namespace Hamburger__menu_swipe_in
 
 		private async void pgMainPage_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
 		{
-			if (!(HamburgerMenuOpen && InitialManipulationPoint < e.Position.X) || TriggerManipulation)
+			if (TriggerManipulation || HamburgerMenuOpen)
 			{
-				double X = e.Position.X > stckpnlMenuWidth ? stckpnlMenuWidth : e.Position.X;
-				if (X > stckpnlMenuWidth / 2)
+				if ((!HamburgerMenuOpen && InitialManipulationPointX < e.Position.X) || HamburgerMenuOpen)
 				{
-					shMenu1.From = -stckpnlMenuWidth + X;
-					shMenu2.From = -stckpnlMenuWidth + X;
-					await strbrdShowMenu.BeginAsync();
-					shMenu1.From = -stckpnlMenuWidth;
-					shMenu2.From = -stckpnlMenuWidth;
-					grdPageOverlay.Visibility = Visibility.Visible;
-				}
-				else
-				{
-					grdPageOverlay.Visibility = Visibility.Collapsed;
-					hdMenu1.From = X - stckpnlMenuWidth;
-					hdMenu2.From = X - stckpnlMenuWidth;
-					await strbrdHideMenu.BeginAsync();
-					hdMenu1.From = 0;
-					hdMenu2.From = 0;
-					HamburgerMenuOpen = false;
+					double X = e.Position.X > stckpnlMenuWidth ? stckpnlMenuWidth : e.Position.X;
+					if (X > stckpnlMenuWidth / 2)
+					{
+						shMenu1.From = -stckpnlMenuWidth + X;
+						shMenu2.From = -stckpnlMenuWidth + X;
+						await strbrdShowMenu.BeginAsync();
+						shMenu1.From = -stckpnlMenuWidth;
+						shMenu2.From = -stckpnlMenuWidth;
+						grdPageOverlay.Visibility = Visibility.Visible;
+					}
+					else	
+					{	
+						grdPageOverlay.Visibility = Visibility.Collapsed;
+						hdMenu1.From = X - stckpnlMenuWidth;
+						hdMenu2.From = X - stckpnlMenuWidth;
+						await strbrdHideMenu.BeginAsync();
+						hdMenu1.From = 0;
+						hdMenu2.From = 0;
+						HamburgerMenuOpen = false;
+					}
 				}
 			}
 			TriggerManipulation = false;
